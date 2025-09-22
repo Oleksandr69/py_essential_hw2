@@ -4,11 +4,11 @@ class Editor:
     def view_document(self):
         print("Перегдяд дозволений.")
     def edit_document(self):
-        print("Редагування дозволено.")
+        print(f"Редагування дозволено. Ключ {self.license_key} вірний.")
 
 class ProEditor(Editor):
     def edit_document(self):
-        print("Редагування не дозволено.")
+        print(f"Редагування не дозволено. Ключ {self.license_key} не вірний.")
 
 license_key = "1111"
 while True:
@@ -16,9 +16,10 @@ while True:
     if key == "stop":
         break
     elif key == license_key:
-        key_found = Editor(license_key)
+        key_found = Editor(key)
     else:
-        key_found = ProEditor(license_key)
-        
+        key_found = ProEditor(key)
+
+    key_found.edit_document()    
     key_found.view_document()
-    key_found.edit_document()
+    
